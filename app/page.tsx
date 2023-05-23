@@ -1,6 +1,7 @@
 'use client';
 
 import ModelViewer from '@/components/ModelViewer'
+import ParticlesContainer from '@/components/ParticlesContainer';
 import refObserver from '@/lib/refObserver';
 import { useModelStore } from '@/lib/store';
 import { useEffect, useRef } from 'react';
@@ -38,10 +39,26 @@ export default function Home() {
   }
 
   return (
-    <main>
+    <main className='relative'>
       <div className='fixed inset-0 bg-black z-0'></div>
       <ModelViewer />
-      <div className='z-20 relative scroll-smooth snap-mandatory snap-y'>
+      <ParticlesContainer/>
+      <div className='z-20 relative scroll-smooth snap-mandatory snap-y '>
+        <div className='z-0 bg-black w-full fixed top-0 py-4 lg:px-48 flex justify-between items-center text-white'>
+          <div>
+            <h1>Mikazuki Studio</h1>
+          </div>
+          <ul className='w-1/3 flex justify-between items-center'>
+            <button onClick={() =>  homeSection?.current.scrollIntoView({ behavior: 'smooth' })}>Home</button>
+            <button onClick={() =>  aboutSection?.current.scrollIntoView({ behavior: 'smooth' })}>About</button>
+            <button  onClick={() => serviceSection?.current.scrollIntoView({ behavior: 'smooth' })}>Service</button>
+            <button>Portfolio</button>
+          </ul>
+          <button className='py-2 px-4 border border-white'>
+            Contact Us
+          </button>
+        </div>
+
         <button onClick={handleArrowClick} className='fixed bottom-8 w-full flex justify-center items-center'>
           <div className='border border-white rounded-full p-4'>
             <svg className='fill-white w-8 h-8' clipRule="evenodd" fillRule="evenodd" strokeLinejoin="round" strokeMiterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -78,8 +95,8 @@ export default function Home() {
           </div>
         </div>
 
-        <div ref={serviceSection} className='w-full text-white px-4 lg:py-24 lg:px-48 flex flex-col justify-center items-end relative'>
-          <div className='w-1/2 space-y-8 h-screen'>
+        <div ref={serviceSection} className='w-full text-white px-4 lg:px-48 flex flex-col justify-center items-end relative'>
+          <div className='w-1/2 space-y-8 h-screen flex flex-col justify-center items-center'>
             <h1 className='font-bold text-2xl lg:text-5xl'>Website Creation</h1>
             <p className='w-full lg:text-lg'>
               Embark on a seamless journey from ideation to the final launch of your website.
@@ -89,7 +106,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className='w-1/2 space-y-8 h-screen'>
+          <div className='w-1/2 space-y-8 h-screen flex flex-col justify-center items-center'>
             <h1 className='font-bold text-2xl lg:text-5xl'>Localization and SEO Support</h1>
             <p className='w-full lg:text-lg'>
               Expand your reach across borders with our international support for localization and search
@@ -99,7 +116,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className='w-1/2 space-y-8 h-screen'>
+          <div className='w-1/2 space-y-8 h-screen flex flex-col justify-center items-center'>
             <h1 className='font-bold text-2xl lg:text-5xl'>Custom Web-Based Systems and Software</h1>
             <p className='w-full lg:text-lg'>
               Unlock the full potential of your digital presence with our web-based systems and software

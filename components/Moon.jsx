@@ -2,7 +2,7 @@ import { useRef } from 'react'
 import { useGLTF} from '@react-three/drei'
 import { useThree, useFrame } from '@react-three/fiber'
 import { useSpring, a } from '@react-spring/three'
-import { useModelStore} from '@/lib/store';
+import { useModelStore} from '@/lib/zustand/modelStore';
 
 export function Moon({ ...props }) {
   const { position, lightPosition, zoom } = useModelStore();

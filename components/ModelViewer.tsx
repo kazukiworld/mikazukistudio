@@ -42,11 +42,17 @@ export default function ModelViewer(props: any) {
                 ref: serviceSection2,
                 action: () => {
                     setCurrentSection('Service 2');
+                    setPosition([-20, -8, 3.8]);
+                    setLightPosition([6, 6, -5]);
+                    setZoom(1.3);
                 }
             },
             {
                 ref: serviceSection3,
                 action: () => {
+                    setPosition([-20, -8, 3.8]);
+                    setLightPosition([6, 6, -5]);
+                    setZoom(1.3);
                     setCurrentSection('Service 3');
                 }
             },

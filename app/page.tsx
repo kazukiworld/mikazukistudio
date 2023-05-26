@@ -5,10 +5,12 @@ import ModelViewer from '@/components/ModelViewer'
 import NavBar from '@/components/NavBar';
 import ParticlesContainer from '@/components/ParticlesContainer';
 import { usePageStore } from '@/lib/zustand/pageStore';
-import { useEffect, useRef} from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useEffect, useRef } from 'react';
 
 export default function Home() {
-  const {setSections} = usePageStore(); 
+  const { setSections } = usePageStore();
   const heroSection = useRef<HTMLDivElement | null>(null);
   const aboutSection = useRef<HTMLDivElement | null>(null);
   const serviceSection = useRef<HTMLDivElement | null>(null);
@@ -23,6 +25,35 @@ export default function Home() {
       serviceSection3, contactSection, portfolioSection
     });
   }, [])
+
+  const portfolioData = [
+    {
+      company: "Aloha Service Specialists",
+      title: "Crafting a Simple Yet Effective Website and Custom Book Keeping System",
+      description: "Transformed the online presence of a leading Japanese cleaning company based in Hawaii that serves diverse clients including prominent real estate companies.  We created a dynamic bilingual website featuring modern design elements and mplemented a custom bookkeeping system for seamless financial management.",
+      link: "https://alohaservicespecialists.com",
+      image: "/alohaservicewebsite.png"
+    }
+  ]
+
+  const portfolios = () => {
+    for (const i in portfolioData) {
+      const portfolio = portfolioData[i];
+
+      return (
+        <div className='px-48 z-20 grid grid-cols-2 gap-12 text-white text-lg'>
+          <h1 className='font-bold text-8xl'>{portfolio?.company}</h1>
+          <div className='w-full h-full flex flex-col items-center justify-center space-y-6'>
+            <Link href={portfolio?.link}>
+              <Image className='w-full object-cover' src={portfolio?.image} alt="Aloha Service Specialists Website" width={2000} height={2000} />
+            </Link>
+            <h2 className='font-bold text-3xl'>{portfolio?.title}</h2>
+            <p>{portfolio?.description}</p>
+          </div>
+        </div>
+      )
+    }
+  }
 
   return (
     <main className='relative'>
@@ -114,7 +145,7 @@ export default function Home() {
         </div>
 
         <div ref={portfolioSection} className='relative z-0 w-full space-y-8 h-screen flex flex-col justify-center items-center'>
-
+          {portfolios()}
         </div>
       </div>
     </main>

@@ -41,8 +41,8 @@ export default function Home() {
       const portfolio = portfolioData[i];
 
       return (
-        <div className='px-48 z-20 grid grid-cols-2 gap-12 text-white text-lg'>
-          <h1 className='font-bold text-8xl'>{portfolio?.company}</h1>
+        <div className='px-4 lg:px-48 z-20 grid lg:grid-cols-2 gap-12 text-lg lg:space-y-8'>
+          <h1 className='font-bold text-4xl lg:text-8xl'>{portfolio?.company}</h1>
           <div className='w-full h-full flex flex-col items-center justify-center space-y-6'>
             <Link href={portfolio?.link}>
               <Image className='w-full object-cover' src={portfolio?.image} alt="Aloha Service Specialists Website" width={2000} height={2000} />
@@ -61,7 +61,7 @@ export default function Home() {
         <div className='fixed inset-0 bg-[#090909] z-0'></div>
 
         {/* Navigation bar at the top */}
-        <NavBar />
+        {/* <NavBar /> */}
 
         {/* Displays moon model.  Able to manipulate the position, light, and camera zoom. */}
         <ModelViewer />
@@ -73,27 +73,25 @@ export default function Home() {
         <DownArrowBtn />
 
         {/* Sections that consists of key information like about, services, portfolio, and contact */}
-        <div ref={heroSection} className='z-20 relative snap-center shrink-0 px-4 lg:px-24'>
-          <div className='lg:w-1/2 h-screen flex flex-col justify-center space-y-8'>
-            <h1 className='text-3xl lg:text-6xl font-bold'>We Illuminate Your Global Digital Presence.</h1>
-            <h2 className='lg:text-lg'>
-              A Japanese creative web design + development studio
-              based in the U.S, crafting bilingual digital experiences with
-              Storytelling and Interactivity.
-            </h2>
-            <div>
-              <button className='bg-rose-600 font-bold px-4 py-3'>Contact Us</button>
-            </div>
+        <div ref={heroSection} className='z-20 relative snap-center px-4 lg:px-24 lg:w-1/2 h-screen flex flex-col justify-end lg:justify-center space-y-4 lg:space-y-8 pb-36 lg:pb-0'>
+          <h1 className='text-4xl lg:text-6xl font-bold'>We Illuminate Your Global Digital Presence.</h1>
+          <h2 className='text-lg'>
+            A Japanese creative web design + development studio
+            based in the U.S, crafting bilingual digital experiences with
+            Storytelling and Interactivity.
+          </h2>
+          <div>
+            <button className='bg-rose-600 font-bold px-4 py-3'>Contact Us</button>
           </div>
         </div>
 
-        <div ref={aboutSection} className='z-20 snap-center shrink-0 w-full h-screen px-4 lg:py-24 lg:px-48 flex flex-col justify-between items-center relative'>
+        <div ref={aboutSection} className='z-20 snap-center shrink-0 w-full h-screen py-36 px-4 lg:py-24 lg:px-48 flex flex-col justify-between items-center relative'>
           <div className='flex justify-end items-center space-x-8'>
-            <h1 className='w-2/3 lg:w-1/3 font-bold text-2xl lg:text-5xl text-end'>A fusion of Western design sophistication and the grace of Japanese aesthetics</h1>
-            <hr className='bg-white h-full w-1' />
+            <h1 className='w-2/3 lg:w-1/3 font-bold text-3xl lg:text-5xl text-end'>A fusion of Western design sophistication and the grace of Japanese aesthetics</h1>
+            <hr className='bg-yellow-50 h-full w-0.5 md:w-1' />
           </div>
           <div>
-            <p className='w-full lg:w-1/3 lg:text-lg'>
+            <p className='w-full lg:w-1/3 text-lg'>
               Mikazuki Studio specializes in bilingual English and Japanese web design and development
               with global clients. Our expertise in multiple languages ensures a smooth user experience,
               targeting both English and Japanese markets.
@@ -101,8 +99,8 @@ export default function Home() {
           </div>
         </div>
 
-        <div className='z-20 w-full px-4 lg:px-48 flex flex-col justify-center items-end relative'>
-          <div ref={serviceSection} className='w-1/2 space-y-8 h-screen flex flex-col justify-center items-center'>
+        <div className='z-0 w-full px-4 lg:px-48 flex flex-col justify-center items-end relative'>
+          <div ref={serviceSection} className='lg:w-1/2 space-y-4 lg:space-y-8 h-screen flex flex-col justify-center lg:items-center'>
             <h1 className='font-bold text-2xl lg:text-5xl'>Website Creation</h1>
             <p className='w-full lg:text-lg'>
               Embark on a seamless journey from ideation to the final launch of your website.
@@ -112,7 +110,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div ref={serviceSection2} className='w-1/2 space-y-8 h-screen flex flex-col justify-center items-center'>
+          <div ref={serviceSection2} className='lg:w-1/2 space-y-4 lg:space-y-8 h-screen flex flex-col justify-center lg:items-center'>
             <h1 className='font-bold text-2xl lg:text-5xl'>Localization and SEO Support</h1>
             <p className='w-full lg:text-lg'>
               Expand your reach across borders with our international support for localization and search
@@ -122,7 +120,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div ref={serviceSection3} className='w-1/2 space-y-8 h-screen flex flex-col justify-center items-center'>
+          <div ref={serviceSection3} className='lg:w-1/2 space-y-4 lg:space-y-8 h-screen flex flex-col justify-center lg:items-center'>
             <h1 className='font-bold text-2xl lg:text-5xl'>Custom Web-Based Systems and Software</h1>
             <p className='w-full lg:text-lg'>
               Unlock the full potential of your digital presence with our web-based systems and software
@@ -133,8 +131,8 @@ export default function Home() {
           </div>
         </div>
 
-        <div ref={contactSection} className='relative z-20 w-full space-y-8 h-screen flex flex-col justify-center items-center'>
-          <div className='w-1/3 flex flex-col justify-center items-center space-y-6'>
+        <div ref={contactSection} className='relative z-20 w-full space-y-8 h-screen flex flex-col justify-center items-center px-4'>
+          <div className='lg:w-1/3 flex flex-col justify-center items-center space-y-4 lg:space-y-6'>
             <h1 className='font-bold text-center text-2xl lg:text-5xl'>Free Consultation</h1>
             <p className='w-full text-center lg:text-lg'>
               Begin your digital journey by contacting us today for a free consultation. Our team of experts

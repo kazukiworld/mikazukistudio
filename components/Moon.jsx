@@ -20,7 +20,7 @@ export function Moon({ ...props }) {
 
   useFrame(({ clock }) => {
     if (modelGroup.current) {
-      modelGroup.current.rotation.y += 0.0004;
+      modelGroup.current.rotation.y += 0.0006;
     }
     camera.zoom = zoomAnim.get();
     camera.updateProjectionMatrix();

@@ -41,7 +41,7 @@ export default function Home() {
       const portfolio = portfolioData[i];
 
       return (
-        <div className='px-4 lg:px-48 z-20 grid lg:grid-cols-2 gap-12 text-lg lg:space-y-8'>
+        <div className='px-4 lg:px-48 z-20 grid lg:grid-cols-2 gap-12 lg:text-lg lg:space-y-8'>
           <h1 className='font-bold text-4xl lg:text-8xl'>{portfolio?.company}</h1>
           <div className='w-full h-full flex flex-col items-center justify-center space-y-6'>
             <Link href={portfolio?.link}>
@@ -59,9 +59,8 @@ export default function Home() {
     <main className='relative'>
       <div className='relative scroll-smooth snap-mandatory snap-y text-yellow-50'>
         <div className='fixed inset-0 bg-[#090909] z-0'></div>
-
         {/* Navigation bar at the top */}
-        {/* <NavBar /> */}
+        <NavBar />
 
         {/* Displays moon model.  Able to manipulate the position, light, and camera zoom. */}
         <ModelViewer />
@@ -74,8 +73,8 @@ export default function Home() {
 
         {/* Sections that consists of key information like about, services, portfolio, and contact */}
         <div ref={heroSection} className='z-20 relative snap-center px-4 lg:px-24 lg:w-1/2 h-screen flex flex-col justify-end lg:justify-center space-y-4 lg:space-y-8 pb-36 lg:pb-0'>
-          <h1 className='text-4xl lg:text-6xl font-bold'>We Illuminate Your Global Digital Presence.</h1>
-          <h2 className='text-lg'>
+          <h1 className='text-3xl lg:text-6xl font-bold'>We Illuminate Your Global Digital Presence.</h1>
+          <h2 className=''>
             A Japanese creative web design + development studio
             based in the U.S, crafting bilingual digital experiences with
             Storytelling and Interactivity.
@@ -91,7 +90,7 @@ export default function Home() {
             <hr className='bg-yellow-50 h-full w-0.5 md:w-1' />
           </div>
           <div>
-            <p className='w-full lg:w-1/3 text-lg'>
+            <p className='w-full lg:w-1/3'>
               Mikazuki Studio specializes in bilingual English and Japanese web design and development
               with global clients. Our expertise in multiple languages ensures a smooth user experience,
               targeting both English and Japanese markets.

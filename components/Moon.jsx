@@ -1,30 +1,44 @@
-import { useRef } from 'react'
-import { useGLTF} from '@react-three/drei'
+import { useEffect, useRef, useState } from 'react'
+import { useGLTF } from '@react-three/drei'
 import { useThree, useFrame } from '@react-three/fiber'
 import { useSpring, a } from '@react-spring/three'
-import { useModelStore} from '@/lib/zustand/modelStore';
+import { useModelStore } from '@/lib/zustand/modelStore';
 
 export function Moon({ ...props }) {
-  const { position, lightPosition, zoom } = useModelStore();
+  const { setModelLoading, position, lightPosition, zoom } = useModelStore();
   const { size, viewport, camera } = useThree();
   const { nodes, materials } = useGLTF('/moon/moon.gltf');
   const modelGroup = useRef();
   const lightRef = useRef();
+  const [rotationSpeed, setRotationSpeed] = useState(0.0006);
 
-  const { posAnim, lightPosAnim, zoomAnim } = useSpring({
+  const { posAnim, lightPosAnim, zoomAnim} = useSpring({
     posAnim: [position[0] / viewport.width, position[1] / viewport.height, position[2]],
     lightPosAnim: lightPosition,
     zoomAnim: zoom,
-    config: { mass: 1, tension: 280, friction: 120 },
+    onStart: () => {
+      setRotationSpeed(0.01); // Increase the rotation speed when the animation starts
+    },
+    onRest: () => {
+      setRotationSpeed(0.0006); // Reset the rotation speed when the animation completes
+    },
+    config: { mass: 1, tension: 360, friction: 120},
   });
 
   useFrame(({ clock }) => {
     if (modelGroup.current) {
-      modelGroup.current.rotation.y += 0.0006;
+      modelGroup.current.rotation.y += rotationSpeed;
     }
     camera.zoom = zoomAnim.get();
     camera.updateProjectionMatrix();
   });
+
+  useEffect(() => {
+    if (nodes && materials) {
+      setModelLoading(false);
+    }
+
+  }, [])
 
   return (
     <a.group {...props} dispose={null} position={posAnim} renderOrder={-1}>

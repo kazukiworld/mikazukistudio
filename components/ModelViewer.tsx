@@ -8,30 +8,18 @@ import { usePageStore } from '@/lib/zustand/pageStore';
 export default function ModelViewer(props: any) {
     const { setPosition, setLightPosition, setZoom } = useModelStore();
     const { setCurrentSection, sections: { heroSection, aboutSection, serviceSection, serviceSection2, serviceSection3, contactSection, portfolioSection } } = usePageStore();
-    const [deviceType, setDeviceType] = useState('mobile');
 
     useEffect(() => {
-        const handleResize = () => {
-            const width = window.innerWidth;
-            let newDeviceType = '';
+        let deviceType = 'computer';
 
-            if (width <= 480) {
-                newDeviceType = 'mobile';
-            } else if (width <= 768) {
-                newDeviceType = 'tablet';
-            } else {
-                newDeviceType = 'computer';
-            }
+        if (window.innerWidth <= 480) {
+            deviceType = 'mobile';
+        } else if (window.innerWidth <= 768) {
+            deviceType = 'tablet';
+        } else {
+            deviceType = 'computer';
+        }
 
-            setDeviceType(newDeviceType);
-        };
-
-        handleResize();
-
-        window.addEventListener('resize', handleResize);
-    }, []);
-
-    useEffect(() => {
         refObserver([
             {
                 ref: heroSection,
@@ -145,7 +133,7 @@ export default function ModelViewer(props: any) {
     return (
         <div className='fixed inset-0 z-10 w-screen h-screen'>
             <Canvas>
-                <Suspense fallback={null}>
+                <Suspense fallback={false}>
                     <Moon />
                     <ambientLight intensity={0.02} />
                 </Suspense>

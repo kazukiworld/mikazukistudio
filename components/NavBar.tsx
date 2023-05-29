@@ -53,7 +53,7 @@ export default function NavBar() {
                     </button>
                 </div>
             </div>
-            <div className={`z-40 w-full fixed bg-[#090909] border-b border-yellow-50 pt-10 transition-all duration-800 ease-in-out lg:translate-y-0 lg:hidden ${openMenu ? "translate-y-0" : "-translate-y-full"}`}>
+            <div className={`z-40 w-full fixed bg-[#090909] border-b border-yellow-50 pt-10 transition-all duration-500 ease-in-out lg:hidden ${openMenu ? "translate-y-0" : "-translate-y-full"}`}>
                 <div className='flex flex-col justify-center items-center p-4 space-y-2'>
                     <button name='Hero' onClick={handleOptionClick}>Home</button>
                     <button name='About' onClick={handleOptionClick}>About</button>

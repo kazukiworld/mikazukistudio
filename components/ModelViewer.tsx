@@ -6,7 +6,7 @@ import { useModelStore } from '@/lib/zustand/modelStore';
 import { usePageStore } from '@/lib/zustand/pageStore';
 
 export default function ModelViewer(props: any) {
-    const { setPosition, setLightPosition, setZoom } = useModelStore();
+    const { setPosition, setLightPosition, setZoom} = useModelStore();
     const { setCurrentSection, sections: { heroSection, aboutSection, serviceSection, serviceSection2, serviceSection3, contactSection, portfolioSection } } = usePageStore();
 
     useEffect(() => {

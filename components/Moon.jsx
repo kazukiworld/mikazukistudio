@@ -17,12 +17,12 @@ export function Moon({ ...props }) {
     lightPosAnim: lightPosition,
     zoomAnim: zoom,
     onStart: () => {
-      setRotationSpeed(0.01); // Increase the rotation speed when the animation starts
+      setRotationSpeed(0.006); // Increase the rotation speed when the animation starts
     },
     onRest: () => {
       setRotationSpeed(0.0006); // Reset the rotation speed when the animation completes
     },
-    config: { mass: 1, tension: 360, friction: 120},
+    config: { mass: 1, tension: 200, friction: 120},
   });
 
   useFrame(({ clock }) => {

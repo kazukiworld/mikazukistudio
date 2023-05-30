@@ -1,17 +1,20 @@
 'use client';
 
 import DownArrowBtn from '@/components/DownArrowBtn';
+import GradientBackground from '@/components/GradientBackground';
 import LoadingScreen from '@/components/LoadingScreen';
 import ModelViewer from '@/components/ModelViewer'
 import NavBar from '@/components/NavBar';
 import ParticlesContainer from '@/components/ParticlesContainer';
+import { useModelStore } from '@/lib/zustand/modelStore';
 import { usePageStore } from '@/lib/zustand/pageStore';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 
 export default function Home() {
-  const { setSections } = usePageStore();
+  const { setSections, currentSection } = usePageStore();
+  const { modelLoading } = useModelStore();
   const heroSection = useRef<HTMLDivElement | null>(null);
   const aboutSection = useRef<HTMLDivElement | null>(null);
   const serviceSection = useRef<HTMLDivElement | null>(null);
@@ -30,7 +33,7 @@ export default function Home() {
   const portfolioData = [
     {
       company: "Aloha Service Specialists",
-      title: "Crafting a Simple Yet Effective Website and Custom Book Keeping System",
+      title: "Crafting a Simple Yet Effective Website and a Custom Book Keeping System",
       description: "Transformed the online presence of a leading Japanese cleaning company based in Hawaii that serves diverse clients including prominent real estate companies.  We created a dynamic bilingual website featuring modern design elements and mplemented a custom bookkeeping system for seamless financial management.",
       link: "https://alohaservicespecialists.com",
       image: "/alohaservicewebsite.png"
@@ -42,13 +45,13 @@ export default function Home() {
       const portfolio = portfolioData[i];
 
       return (
-        <div className='px-4 lg:px-48 z-20 grid lg:grid-cols-2 gap-12 lg:text-lg lg:space-y-8'>
-          <h1 className='font-bold text-4xl lg:text-8xl'>{portfolio?.company}</h1>
-          <div className='w-full h-full flex flex-col items-center justify-center space-y-6'>
+        <div className={`px-4 lg:px-48 z-20 grid lg:grid-cols-2 gap-12 lg:space-y-8`}>
+          <h1 className='font-bold text-2xl lg:text-8xl'>{portfolio?.company}</h1>
+          <div className='w-full h-full flex flex-col items-center justify-center space-y-2'>
             <Link href={portfolio?.link}>
               <Image className='w-full object-cover' src={portfolio?.image} alt="Aloha Service Specialists Website" width={2000} height={2000} />
             </Link>
-            <h2 className='font-bold text-3xl'>{portfolio?.title}</h2>
+            <h2 className='font-bold text-lg lg:text-2xl'>{portfolio?.title}</h2>
             <p>{portfolio?.description}</p>
           </div>
         </div>
@@ -59,9 +62,11 @@ export default function Home() {
   return (
     <main className='relative'>
       <div className='relative text-yellow-50'>
-        <div className='fixed inset-0 bg-[#090909] z-0'></div>
 
-        <LoadingScreen/>
+        <GradientBackground />
+
+        {/* A loading screen for the 3D model */}
+        <LoadingScreen />
 
         {/* Navigation bar at the top */}
         <NavBar />
@@ -76,9 +81,11 @@ export default function Home() {
         <DownArrowBtn />
 
         {/* Sections that consists of key information like about, services, portfolio, and contact */}
-        <div ref={heroSection} className='z-20 relative px-4 lg:px-24 lg:w-1/2 h-screen flex flex-col justify-end lg:justify-center space-y-4 lg:space-y-8 pb-36 lg:pb-0'>
-          <h1 className='text-3xl lg:text-6xl font-bold'>We Illuminate Your Global Digital Presence.</h1>
-          <h2 className=''>
+        <div ref={heroSection} className={`z-20 relative px-4 lg:px-24 lg:w-1/2 h-screen flex flex-col justify-end lg:justify-center space-y-4 lg:space-y-8 pb-36 lg:pb-0`}>
+          <h1 className={`text-3xl lg:text-6xl font-bold transition-all duration-1000 ease-in-out ${modelLoading ? 'opacity-0' : 'opacity-100'}`}>
+            We Illuminate Your Global Digital Presence.
+          </h1>
+          <h2 className={`transition-all delay-50 duration-1000 ease-in-out ${modelLoading ? 'opacity-0' : 'opacity-100'}`}>
             A Japanese creative web design + development studio
             based in the U.S, crafting bilingual digital experiences with
             Storytelling and Interactivity.
@@ -88,13 +95,15 @@ export default function Home() {
           </div>
         </div>
 
-        <div ref={aboutSection} className='z-20 shrink-0 w-full h-screen py-36 px-4 lg:py-24 lg:px-48 flex flex-col justify-between items-center relative'>
+        <div ref={aboutSection} className='z-20 w-full h-screen space-y-24 px-4 lg:py-24 lg:px-48 flex flex-col justify-center items-center relative'>
           <div className='flex justify-end items-center space-x-8'>
-            <h1 className='w-2/3 lg:w-1/3 font-bold text-3xl lg:text-5xl text-end'>A fusion of Western design sophistication and the grace of Japanese aesthetics</h1>
-            <hr className='bg-yellow-50 h-full w-0.5 md:w-1' />
+            <h1 className={`w-2/3 lg:w-1/3 font-bold text-3xl lg:text-5xl text-end transition-all duration-700 ease-in-out ${currentSection == 'About' ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
+              A fusion of Western design sophistication and the grace of Japanese aesthetics
+            </h1>
+            <hr className={`bg-yellow-50 w-0.5 md:w-1 transition-all duration-1000 ease-in-out ${currentSection == 'About' ? 'h-full' : 'h-0'}`} />
           </div>
           <div>
-            <p className='w-full lg:w-1/3 lg:text-lg'>
+            <p className={`w-full lg:w-1/3 lg:text-lg transition-all duration-1000 delay-100 ease-in-out ${currentSection == 'About' ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-20'}`}>
               Mikazuki Studio specializes in bilingual English and Japanese web design and development
               with global clients. Our expertise in multiple languages ensures a smooth user experience,
               targeting both English and Japanese markets.
@@ -105,8 +114,8 @@ export default function Home() {
 
         <div ref={serviceSection} className='relative px-4 lg:px-48 w-full h-screen flex flex-col justify-center lg:items-end'>
           <div className='lg:w-1/2 space-y-4 lg:space-y-8'>
-            <h1 className='font-bold text-2xl lg:text-5xl'>Website Creation</h1>
-            <p className='w-full lg:text-lg'>
+            <h1 className={`font-bold text-2xl lg:text-5xl transition-all duration-1000 ease-in-out ${currentSection == 'Service' ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-20'}`}>Website Creation</h1>
+            <p className={`w-full lg:text-lg  transition-all duration-1000 delay-100 ease-in-out ${currentSection == 'Service' ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-20'}`}>
               Embark on a seamless journey from ideation to the final launch of your website.
               Our comprehensive services cover every aspect, including research, design, development,
               and deployment. We bring your vision to life with a touch of elegance, creating captivating
@@ -117,8 +126,8 @@ export default function Home() {
 
         <div ref={serviceSection2} className='relative px-4 lg:px-48 w-full space-y-4 lg:space-y-8 h-screen flex flex-col justify-center lg:items-end'>
           <div className='lg:w-1/2 space-y-4 lg:space-y-8'>
-            <h1 className='font-bold text-2xl lg:text-5xl'>Localization and SEO Support</h1>
-            <p className='w-full lg:text-lg'>
+            <h1 className={`font-bold text-2xl lg:text-5xl transition-all duration-1000 ease-in-out ${currentSection == 'Service 2' ? 'opacity-100' : 'opacity-0'}`}>Localization and SEO Support</h1>
+            <p className={`w-full lg:text-lg  transition-all duration-1000 delay-50 ease-in-out ${currentSection == 'Service 2' ? 'opacity-100' : 'opacity-0'}`}>
               Expand your reach across borders with our international support for localization and search
               engine optimization. We ensure your website adapts to different cultural contexts and
               languages, while optimizing its visibility in search engine results. This ensures your
@@ -129,8 +138,8 @@ export default function Home() {
 
         <div ref={serviceSection3} className='relative px-4 lg:px-48 w-full space-y-4 lg:space-y-8 h-screen flex flex-col justify-center lg:items-end'>
           <div className='lg:w-1/2 space-y-4 lg:space-y-8'>
-            <h1 className='font-bold text-2xl lg:text-5xl'>Custom Web-Based Systems and Software</h1>
-            <p className='w-full lg:text-lg'>
+            <h1 className={`font-bold text-2xl lg:text-5xl  transition-all duration-1000 ease-in-out ${currentSection == 'Service 3' ? 'opacity-100' : 'opacity-0'}`}>Custom Web-Based Systems and Software</h1>
+            <p className={`w-full lg:text-lg  transition-all duration-1000 delay-50 ease-in-out ${currentSection == 'Service 3' ? 'opacity-100' : 'opacity-0'}`}>
               Unlock the full potential of your digital presence with our web-based systems and software
               solutions. From content management systems to e-commerce platforms, we develop user-friendly
               and technologically advanced solutions that streamline your operations and enhance your online
@@ -139,7 +148,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div ref={contactSection} className='relative z-20 w-full space-y-8 h-screen flex flex-col justify-center items-center px-4'>
+        <div ref={contactSection} className={`relative z-20 w-full space-y-8 h-screen flex flex-col justify-center items-center px-4 transition-all duration-1000 ease-in-out ${currentSection == 'Contact' ? 'opacity-100' : 'opacity-0'}`}>
           <div className='lg:w-1/3 flex flex-col justify-center items-center space-y-4 lg:space-y-6'>
             <h1 className='font-bold text-center text-2xl lg:text-5xl'>Free Consultation</h1>
             <p className='w-full text-center lg:text-lg'>

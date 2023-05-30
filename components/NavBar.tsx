@@ -27,7 +27,7 @@ export default function NavBar() {
     }
 
     return (
-        <div>
+        <div className='font-custom'>
             <div className='hidden z-50 bg-[#090909] w-full fixed top-0 py-4 lg:px-48 lg:flex justify-between items-center'>
                 <div className='flex justify-center items-center'>
                     <h1>Mikazuki Studio</h1>
@@ -43,7 +43,7 @@ export default function NavBar() {
                 </button>
             </div>
 
-            <div className='w-full flex flex-col lg:hidden z-50 fixed top-0 py-2 px-4 bg-[#090909] space-y-2 lg:px-48 justify-center items-center'>
+            <div className='w-full flex flex-col lg:hidden z-50 fixed top-0 py-2 px-4 bg-[#090909] space-y-2 justify-center items-center'>
                 <div className='z-50 w-full  flex justify-between items-center'>
                     <div className='flex justify-center items-center'>
                         <h1>Mikazuki Studio</h1>

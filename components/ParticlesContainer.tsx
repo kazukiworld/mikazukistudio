@@ -30,17 +30,17 @@ export default ParticlesContainer;
 const particlesOptions: any = {
     particles: {
         number: {
-            value: 500,
+            value: 200,
             density: {
                 enable: true,
                 value_area: 800
             }
         },
         shape: {
-            type: 'circle',
+            type: 'star',
             stroke: {
                 width: 0,
-                color: '#000000'
+                color: 'gray'
             },
             polygon: {
                 nb_sides: 5
@@ -52,7 +52,7 @@ const particlesOptions: any = {
             }
         },
         size: {
-            value: 0.5,
+            value: 1.4,
             random: true,
             anim: {
                 enable: false,

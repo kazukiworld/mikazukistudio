@@ -25,9 +25,12 @@ export default function ModelViewer(props: any) {
                 ref: heroSection,
                 action: () => {
                     if (deviceType == 'mobile') {
-                        setPosition([0.4, 3, 0]);
+                        setPosition([0.1, 0.6, 0]);
                         setLightPosition([3, -1, -0.6]);
-                        setZoom(3.8);
+                        setZoom(10);
+                        // setPosition([0.4, 3.4, 0]);
+                        // setLightPosition([3, -1, -0.6]);
+                        // setZoom(3.8);
                     } else {
                         setPosition([40, 10, 0]);
                         setLightPosition([3, -1, 0]);

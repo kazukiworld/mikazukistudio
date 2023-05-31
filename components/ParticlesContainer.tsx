@@ -5,13 +5,10 @@ import { Container, Engine } from 'tsparticles-engine';
 
 const ParticlesContainer = () => {
     const particlesInit = useCallback(async (engine: Engine) => {
-        console.log(engine);
-
         await loadFull(engine);
     }, []);
 
     const particlesLoaded = useCallback(async (container: Container | undefined) => {
-        await console.log(container);
     }, []);
 
     return (
@@ -63,7 +60,7 @@ const particlesOptions: any = {
         },
         move: {
             enable: true,
-            speed: 0.001,
+            speed: 0.01,
             direction: 'none',
             random: false,
             straight: false,

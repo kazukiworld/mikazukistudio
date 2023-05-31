@@ -26,3 +26,17 @@
 body {
     font-family: 'Raleway', sans-serif;
 }
+
+@keyframes glowing {
+    0% {
+        text-shadow: 0 0 1px #fff, 0 0 4px #88e1ff;
+    }
+
+    100% {
+        text-shadow: 0 0 1px #fff, 0 0 4px #88e1ff;
+    }
+}
+
+.glow-effect {
+    animation: glowing 1s infinite;
+}

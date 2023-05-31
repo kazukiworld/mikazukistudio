@@ -25,18 +25,14 @@ export default function ModelViewer(props: any) {
                 ref: heroSection,
                 action: () => {
                     if (deviceType == 'mobile') {
-                        setPosition([0.1, 0.6, 0]);
+                        setPosition([0, -0.1, 0]);
                         setLightPosition([3, -1, -0.6]);
-                        setZoom(10);
-                        // setPosition([0.4, 3.4, 0]);
-                        // setLightPosition([3, -1, -0.6]);
-                        // setZoom(3.8);
+                        setZoom(20);
                     } else {
-                        setPosition([40, 10, 0]);
+                        setPosition([1, 0, 0]);
                         setLightPosition([3, -1, 0]);
-                        setZoom(1.3);
+                        setZoom(10);
                     }
-
                     setCurrentSection('Hero');
                 }
             },
@@ -63,9 +59,9 @@ export default function ModelViewer(props: any) {
                         setLightPosition([0, 40, -20]);
                         setZoom(10);
                     } else {
-                        setPosition([-20, -8, 3.8]);
+                        setPosition([-12, -8, 3.8]);
                         setLightPosition([6, 6, -5]);
-                        setZoom(1.3);
+                        setZoom(3);
                     }
                     setCurrentSection('Service');
                 }
@@ -78,9 +74,9 @@ export default function ModelViewer(props: any) {
                         setLightPosition([6, 6, 5]);
                         setZoom(10);
                     } else {
-                        setPosition([-20, -8, 3.8]);
+                        setPosition([-12, -8, 3.8]);
                         setLightPosition([6, 6, -5]);
-                        setZoom(1.3);
+                        setZoom(3);
                     }
                     setCurrentSection('Service 2');
                 }
@@ -93,9 +89,9 @@ export default function ModelViewer(props: any) {
                         setLightPosition([6, 6, 5]);
                         setZoom(10);
                     } else {
-                        setPosition([-20, -8, 3.8]);
+                        setPosition([-12, -8, 3.8]);
                         setLightPosition([6, 6, -5]);
-                        setZoom(1.3);
+                        setZoom(3);
                     }
                     setCurrentSection('Service 3');
                 }

@@ -22,7 +22,7 @@ export function Moon({ ...props }) {
     onRest: () => {
       setRotationSpeed(0.0006); // Reset the rotation speed when the animation completes
     },
-    config: { mass: 1, tension: 200, friction: 120},
+    config: { mass: 1, tension: 260, friction: 120},
   });
 
   useFrame(({ clock }) => {

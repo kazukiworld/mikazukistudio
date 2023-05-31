@@ -26,7 +26,7 @@ export default function ModelViewer(props: any) {
                 action: () => {
                     if (deviceType == 'mobile') {
                         setPosition([0, -0.1, 0]);
-                        setLightPosition([3, -1, -0.6]);
+                        setLightPosition([10, 12, -8]);
                         setZoom(20);
                     } else {
                         setPosition([1, 0, 0]);

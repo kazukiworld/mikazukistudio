@@ -29,11 +29,11 @@ body {
 
 @keyframes glowing {
     0% {
-        text-shadow: 0 0 1px #fff, 0 0 4px #88e1ff;
+        text-shadow: 0 0 1px #fff, 0 0 3px #88e1ff, 0 0 4px #88e1ff;
     }
 
     100% {
-        text-shadow: 0 0 1px #fff, 0 0 4px #88e1ff;
+        text-shadow: 0 0 1px #fff, 0 0 3px #88e1ff, 0 0 4px #88e1ff;
     }
 }
 

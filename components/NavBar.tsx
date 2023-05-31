@@ -60,11 +60,11 @@ export default function NavBar() {
                         <h1>Mikazuki Studio</h1>
                     </div>
                     <button onClick={handleMenuClick}>
-                        <svg className='fill-white w-8 h-8' clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m11 16.745c0-.414.336-.75.75-.75h9.5c.414 0 .75.336.75.75s-.336.75-.75.75h-9.5c-.414 0-.75-.336-.75-.75zm-9-5c0-.414.336-.75.75-.75h18.5c.414 0 .75.336.75.75s-.336.75-.75.75h-18.5c-.414 0-.75-.336-.75-.75zm4-5c0-.414.336-.75.75-.75h14.5c.414 0 .75.336.75.75s-.336.75-.75.75h-14.5c-.414 0-.75-.336-.75-.75z" fill-rule="nonzero" /></svg>
+                        <svg className='fill-white w-8 h-8' clipRule="evenodd" fillRule="evenodd" strokeLinejoin="round" strokeMiterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m11 16.745c0-.414.336-.75.75-.75h9.5c.414 0 .75.336.75.75s-.336.75-.75.75h-9.5c-.414 0-.75-.336-.75-.75zm-9-5c0-.414.336-.75.75-.75h18.5c.414 0 .75.336.75.75s-.336.75-.75.75h-18.5c-.414 0-.75-.336-.75-.75zm4-5c0-.414.336-.75.75-.75h14.5c.414 0 .75.336.75.75s-.336.75-.75.75h-14.5c-.414 0-.75-.336-.75-.75z" fill-rule="nonzero" /></svg>
                     </button>
                 </div>
             </div>
-            <div className={`z-40 w-full fixed bg-[#090909] border-b border-yellow-50 pt-10 transition-all duration-500 ease-in-out lg:hidden ${openMenu ? "translate-y-0" : "-translate-y-full"}`}>
+            <div className={`z-40 w-full fixed bg-[#090909] border-b border-yellow-50 pt-10 transition-all duration-300 ease-in-out lg:hidden ${openMenu ? "translate-y-0" : "-translate-y-full"}`}>
                 <div className='flex flex-col justify-center items-center p-4 space-y-2'>
                     <button name='Hero' onClick={handleOptionClick}>Home</button>
                     <button name='About' onClick={handleOptionClick}>About</button>

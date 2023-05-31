@@ -1,8 +1,8 @@
 import './globals.css'
 
 export const metadata = {
-  title: 'Japanese Web Design and Development Agency based in the U.S',
-  description: 'We are Mikazuki Studio, a Japanese creative web design and development studio based in the U.S, crafting bilingual digital experiences with storytelling and interactivity.',
+  title: 'Mikazuki Studio',
+  description: 'A Japanese creative web design and development agency based in the U.S, crafting bilingual digital experiences with storytelling and interactivity.',
 }
 
 export default function RootLayout({

@@ -8,6 +8,7 @@ export const usePageStore = create<PageStore>((set) => ({
         serviceSection: null,
         serviceSection2: null,
         serviceSection3: null,
+        serviceSection4: null,
         contactSection: null,
         portfolioSection: null,
     },
@@ -21,6 +22,7 @@ type Sections = {
     serviceSection: React.MutableRefObject<HTMLElement | null> | null,
     serviceSection2: React.MutableRefObject<HTMLElement | null> | null,
     serviceSection3: React.MutableRefObject<HTMLElement | null> | null,
+    serviceSection4: React.MutableRefObject<HTMLElement | null> | null,
     contactSection: React.MutableRefObject<HTMLElement | null> | null,
     portfolioSection: React.MutableRefObject<HTMLElement | null> | null
 }

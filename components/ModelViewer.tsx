@@ -7,7 +7,7 @@ import { usePageStore } from '@/lib/zustand/pageStore';
 
 export default function ModelViewer(props: any) {
     const { setPosition, setLightPosition, setZoom} = useModelStore();
-    const { setCurrentSection, sections: { heroSection, aboutSection, serviceSection, serviceSection2, serviceSection3, contactSection, portfolioSection } } = usePageStore();
+    const { setCurrentSection, sections: { heroSection, aboutSection, serviceSection, serviceSection2, serviceSection3, serviceSection4, portfolioSection, contactSection} } = usePageStore();
 
     useEffect(() => {
         let deviceType = 'computer';
@@ -97,7 +97,7 @@ export default function ModelViewer(props: any) {
                 }
             },
             {
-                ref: contactSection,
+                ref: serviceSection4,
                 action: () => {
                     if (deviceType == 'mobile') {
                         setPosition([0, -3.8, 0]);
@@ -108,7 +108,7 @@ export default function ModelViewer(props: any) {
                         setLightPosition([10, 20, 20]);
                         setZoom(6);
                     }
-                    setCurrentSection('Contact');
+                    setCurrentSection('Service 4');
                 }
             },
             {
@@ -126,13 +126,28 @@ export default function ModelViewer(props: any) {
                     setCurrentSection('Portfolio')
                 }
             },
+            {
+                ref: contactSection,
+                action: () => {
+                    // if (deviceType == 'mobile') {
+                    //     setPosition([2, -3.8, 0]);
+                    //     setLightPosition([6, 6, 5]);
+                    //     setZoom(12);
+                    // } else {
+                    //     setPosition([20, -8, 3.8]);
+                    //     setLightPosition([0, 0, 0]);
+                    //     setZoom(3);
+                    // }
+                    setCurrentSection('Contact')
+                }
+            },
         ])
     }, [heroSection])
 
     return (
         <div className='fixed inset-0 z-10 w-screen h-screen'>
             <Canvas>
-                <Suspense fallback={false}>
+                <Suspense>
                     <Moon />
                     <ambientLight intensity={0.02} />
                 </Suspense>

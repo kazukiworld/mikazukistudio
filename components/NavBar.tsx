@@ -1,9 +1,11 @@
+'use client'
+
 import { usePageStore } from '@/lib/zustand/pageStore'
-import Image from 'next/image';
+import Link from 'next/link';
 import { useState } from 'react';
 
 export default function NavBar() {
-    const { sections: { heroSection, aboutSection, serviceSection, portfolioSection } } = usePageStore();
+    const { sections: { heroSection, aboutSection, serviceSection, portfolioSection, contactSection } } = usePageStore();
     const [openMenu, setOpenMenu] = useState<boolean>(false);
 
     const handleMenuClick = () => {
@@ -22,6 +24,8 @@ export default function NavBar() {
                 break;
             case 'Portfolio': portfolioSection?.current && portfolioSection?.current.scrollIntoView({ behavior: 'smooth' });
                 break;
+            case 'Contact': contactSection?.current && contactSection?.current.scrollIntoView({ behavior: 'smooth' });
+                break;
         }
 
         setOpenMenu(false);
@@ -38,13 +42,13 @@ export default function NavBar() {
                     </svg>
                     <h1>Mikazuki Studio</h1>
                 </div>
-                <ul className='w-1/3 flex justify-between items-center'>
+                <div className='w-1/3 flex justify-between items-center'>
                     <button name='Hero' onClick={handleOptionClick}>Home</button>
                     <button name='About' onClick={handleOptionClick}>About</button>
                     <button name='Service' onClick={handleOptionClick}>Service</button>
                     <button name='Portfolio' onClick={handleOptionClick}>Portfolio</button>
-                </ul>
-                <button className='py-2 px-4 border border-yellow-50'>
+                </div>
+                <button name='Contact' className='py-2 px-4 border border-yellow-50'>
                     Contact Us
                 </button>
             </div>
@@ -70,6 +74,7 @@ export default function NavBar() {
                     <button name='About' onClick={handleOptionClick}>About</button>
                     <button name='Service' onClick={handleOptionClick}>Service</button>
                     <button name='Portfolio' onClick={handleOptionClick}>Portfolio</button>
+                    <button name='Contact' onClick={handleOptionClick}>Contact Us</button>
                 </div>
             </div>
         </div>

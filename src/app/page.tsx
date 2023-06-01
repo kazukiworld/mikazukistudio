@@ -12,6 +12,7 @@ import { useModelStore } from '@/lib/zustand/modelStore';
 import { usePageStore } from '@/lib/zustand/pageStore';
 import Image from 'next/image';
 import Link from 'next/link';
+import React from 'react';
 import { useEffect, useRef } from 'react';
 
 export default function Home() {
@@ -32,10 +33,6 @@ export default function Home() {
       serviceSection3, serviceSection4, portfolioSection, contactSection
     });
   }, [])
-
-  const handleContactClick = () => {
-    contactSection?.current && contactSection?.current.scrollIntoView({ behavior: 'smooth' });
-  }
 
   return (
     <main className={`text-yellow-50 ${modelLoading ? 'fixed' : 'relative'}`}>
@@ -75,7 +72,7 @@ export default function Home() {
             Storytelling and Interactivity.
           </h2>
           <div>
-            <button className='font-custom bg-yellow-50 text-black font-bold px-4 py-3 rounded' onClick={handleContactClick}>Contact Us</button>
+            <button className='font-custom bg-yellow-50 text-black font-bold px-4 py-3 rounded'>Contact Us</button>
           </div>
         </div>
 
@@ -144,7 +141,7 @@ export default function Home() {
               Begin your digital journey by contacting us today for a free consultation. Our team of experts
               is ready to offer insights and suggestions to help you achieve your digital ambitions.
             </p>
-            <button className='bg-yellow-50 text-black rounded font-bold px-4 py-3' onClick={handleContactClick}>Contact Us</button>
+            <Link href={'/contact'} className='bg-yellow-50 text-black rounded font-bold px-4 py-3'>Contact Us</Link>
           </div>
         </div>
 

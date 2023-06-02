@@ -48,7 +48,7 @@ export default function NavBar() {
                     <button name='Service' onClick={handleOptionClick}>Service</button>
                     <button name='Portfolio' onClick={handleOptionClick}>Portfolio</button>
                 </div>
-                <button name='Contact' className='py-2 px-4 border border-yellow-50'>
+                <button name='Contact' onClick={handleOptionClick} className='py-2 px-4 border border-yellow-50 rounded'>
                     Contact Us
                 </button>
             </div>

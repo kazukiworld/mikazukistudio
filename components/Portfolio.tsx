@@ -18,7 +18,7 @@ export default function Portfolio() {
             const portfolio = portfolioData[i];
 
             return (
-                <div className={`lg:px-48 z-20 grid lg:grid-cols-2 gap-4 lg:gap-12 lg:space-y-8`}>
+                <div className={`md:px-14 lg:px-48 z-20 grid lg:grid-cols-2 gap-4 lg:gap-12 lg:space-y-8`}>
                     <h1 className='font-custom font-bold text-2xl lg:text-7xl'>{portfolio?.company}</h1>
                     <div className='w-full h-full flex flex-col items-center justify-center space-y-2'>
                         <Link href={portfolio?.link}>
@@ -32,7 +32,7 @@ export default function Portfolio() {
         }
     }
     return (
-        <div className='snap-center relative z-10 py-24 px-4 w-full space-y-24 flex flex-col justify-center items-center '>
+        <div className='snap-center relative z-10 py-24 px-4 w-full space-y-24 min-h-screen flex flex-col justify-center items-center '>
             {portfolios()}
         </div>
     )

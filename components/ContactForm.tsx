@@ -62,11 +62,11 @@ export default function ContactForm() {
     return (
         <div className='z-30 relative pt-12 min-h-screen lg:pt-0 bg-[#090909] w-full h-full flex flex-col justify-center items-center'>
             <ToastContainer />
-            <h2 className='m-8 md:m-12 text-white text-xl font-bold'>Let Us Hear From You</h2>
+            <h2 className='m-4 lg:m-12 text-white text-xl font-bold'>Let Us Hear From You</h2>
             <form className='w-full mb-12 flex flex-col justify-center items-center' action="">
-                <div className='space-y-4 md:space-y-0 mb-4 w-full md:w-4/6 md:space-x-8 flex flex-col md:flex-row justify-center items-start'>
-                    <ul className='w-full md:w-1/2 space-y-4'>
-                        <li className='mx-4 md:mx-0'>
+                <div className='space-y-4 lg:space-y-0 mb-4 w-full lg:w-4/6 lg:space-x-8 flex flex-col lg:flex-row justify-center items-start'>
+                    <ul className='w-full lg:w-1/2 space-y-4 px-4 md:px-12 lg:px-0'>
+                        <li className=''>
                             <h3 className='text-white'>Name</h3>
                             <input
                                 placeholder=""
@@ -77,7 +77,7 @@ export default function ContactForm() {
                                 className='px-2 text-black rounded w-full border-2 boder-slate-600'
                             />
                         </li>
-                        <li className='mx-4 md:mx-0'>
+                        <li className=''>
                             <h3 className='text-white'>Email</h3>
                             <input
                                 required
@@ -89,7 +89,7 @@ export default function ContactForm() {
                                 className='px-2 text-black rounded w-full border-2 boder-slate-600'
                             />
                         </li>
-                        <li className='mx-4 md:mx-0'>
+                        <li className=''>
                             <h3 className='text-white'>Phone Number (Optional)</h3>
                             <input
                                 placeholder=""
@@ -100,7 +100,7 @@ export default function ContactForm() {
                                 className='px-2 text-black rounded w-full border-2 boder-slate-600'
                             />
                         </li>
-                        <li className='mx-4 md:mx-0'>
+                        <li className=''>
                             <h3 className='text-white'>Company</h3>
                             <input
                                 placeholder=""
@@ -112,8 +112,9 @@ export default function ContactForm() {
                             />
                         </li>
                     </ul>
-                    <div className='w-full md:w-1/2 flex flex-col space-y-4'>
-                        <div className='mx-4 md:mx-0'>
+                    
+                    <div className='w-full lg:w-1/2 flex flex-col space-y-4  px-4 md:px-12 lg:px-0'>
+                        <div className=''>
                             <h3 className='text-white'>Subject</h3>
                             <input
                                 placeholder=""
@@ -124,7 +125,7 @@ export default function ContactForm() {
                                 className='px-2 text-black rounded w-full border-2 boder-slate-600'
                             />
                         </div>
-                        <div className='mx-4 md:mx-0 text-white'>
+                        <div className=''>
                             <h3>Message</h3>
                             <textarea
                                 required

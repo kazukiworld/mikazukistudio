@@ -81,7 +81,7 @@ export default function Home() {
 
         <div ref={aboutSection} className='snap-center z-20 w-full h-screen space-y-20 lg:py-24 px-4 md:px-14 lg:px-48 flex flex-col justify-center items-center relative'>
           <div className='flex justify-end items-center space-x-8'>
-            <h1 className={`font-custom w-2/3 md:w-1/2 lg:w-2/5 text-2xl md:text-5xl text-end transition-all duration-700 ease-in-out ${currentSection == 'About' ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
+            <h1 className={`font-custom w-2/3 lg:w-2/5 text-2xl md:text-5xl text-end transition-all duration-700 ease-in-out ${currentSection == 'About' ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
               A fusion of Western design sophistication and the grace of Japanese aesthetics
             </h1>
             <hr className={`bg-yellow-50 w-0.5 md:w-1 transition-all duration-1000 ease-in-out ${currentSection == 'About' ? 'h-full' : 'h-0'}`} />

@@ -5,7 +5,6 @@ import React from 'react'
 
 export default function LoadingScreen() {
     const { modelLoading } = useModelStore();
-
     const { progress } = useProgress();
     return (
         <div className={`fixed bg-[#090909] inset-0 transition-all duration-500 ease-in-out ${modelLoading ? 'h-screen z-[60]' : 'h-0 z-[-10]'}`}>
@@ -17,7 +16,11 @@ export default function LoadingScreen() {
                 </svg>
                 <h1 className='font-custom text-center text-2xl font-bold'>Mikazuki Studio</h1>
                 <h2 className='text-center text-lg'>Japanese Creative Web Design + Development Agency Based In U.S</h2>
-                <h2 className='text-center text-lg'>{progress}%</h2>
+                <div className="relative h-4 w-full w-3/4 md:w-1/3 rounded-full">
+                    <hr className="absolute rounded-full bg-white h-full w-full"/>
+                    <hr className="absolute rounded-full bg-rose-600 h-full transition-all duration-500" style={{ width: `${progress}%` }} />
+                </div>
+                <h2 className='animate-pulse'>Loading...</h2>
             </div>
         </div>
     )

@@ -75,7 +75,7 @@ export default function Home() {
             Storytelling and Interactivity.
           </h2>
           <div>
-            <button className='font-custom bg-yellow-50 text-black font-bold px-4 py-3 rounded' onClick={handleContactClick}>Contact Us</button>
+            <button className='font-custom bg-rose-600 font-bold px-4 py-3 rounded' onClick={handleContactClick}>Contact Us</button>
           </div>
         </div>
 

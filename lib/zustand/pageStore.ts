@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 
 export const usePageStore = create<PageStore>((set) => ({
-    currentSection: 'Hero',
+    currentSection: null,
     sections: {
         heroSection: null,
         aboutSection: null,
@@ -28,7 +28,7 @@ type Sections = {
 }
 
 type PageStore = {
-    currentSection: string; 
+    currentSection: string | null; 
     sections: Sections;
     setCurrentSection: (currentSection: string) => void;
     setSections: (section: Sections) => void;

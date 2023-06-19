@@ -11,11 +11,10 @@ import Portfolio from '@/components/Portfolio';
 import { useModelStore } from '@/lib/zustand/modelStore';
 import { usePageStore } from '@/lib/zustand/pageStore';
 import Image from 'next/image';
-import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 
 export default function Home() {
-  const {setSections, currentSection } = usePageStore();
+  const { setSections, currentSection } = usePageStore();
   const { modelLoading } = useModelStore();
   const heroSection = useRef<HTMLDivElement | null>(null);
   const aboutSection = useRef<HTMLDivElement | null>(null);
@@ -27,6 +26,7 @@ export default function Home() {
   const contactSection = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
+
     setSections({
       heroSection, aboutSection, serviceSection, serviceSection2,
       serviceSection3, serviceSection4, portfolioSection, contactSection
@@ -37,14 +37,16 @@ export default function Home() {
     contactSection?.current && contactSection?.current.scrollIntoView({ behavior: 'smooth' });
   }
 
+  // ${modelLoading ? 'fixed' : 'relative'}
+
   return (
-    <main className={`text-yellow-50 ${modelLoading ? 'fixed' : 'relative'}`}>
+    <main className={`text-yellow-50`}>
 
       {/* A background with a solid color and colorful blurred circle animations */}
       <GradientBackground />
 
       {/* A loading screen for the 3D model */}
-      <LoadingScreen />
+      {/* <LoadingScreen /> */}
 
       {/* Navigation bar at the top */}
       <NavBar />
@@ -58,18 +60,33 @@ export default function Home() {
       {/* An arrow icon at the bottom of the screen to navigate to each section by scrolling. */}
       <DownArrowBtn />
 
+    
+      <Image className={`fixed inset-0 h-screen w-screen object-fit transition-all duration-1000 ${modelLoading ? 'z-20 opacity-100 scale-100' : 'z-0 opacity-0 scale-[6]'}`} src={'/spaceship.gif'} alt='warp' width={640} height={358} />
+
       {/* Sections that consists of key information like about, services, portfolio, and contact */}
       <div className='w-full h-screen lg:h-auto overflow-y-scroll lg:overflow-auto scroll-smooth snap-mandatory snap-y'>
 
         <div ref={heroSection} className={`snap-center z-20 relative px-4 md:px-14 lg:px-24 md:w-4/5 lg:w-3/5 h-screen flex flex-col justify-center space-y-4 lg:space-y-8`}>
-          <h1 className={`font-custom font-bold text-4xl w-4/5 md:text-6xl transition-all duration-1000 ease-in-out ${modelLoading ? 'opacity-0' : 'opacity-100'}`}>
+          {/* <h1 className={`font-custom font-bold text-4xl w-4/5 md:text-6xl transition-all duration-1000 ease-in-out ${currentSection == 'Hero' ? 'opacity-100' : 'opacity-0'}`}>
             We
             <span className='font-medium glow-effect inline-block md:px-4'>
               Illuminate
             </span>
             Your Global Digital Presence.
           </h1>
-          <h2 className={`transition-all delay-50 duration-1000 ease-in-out lg:text-lg ${modelLoading ? 'opacity-0' : 'opacity-100'}`}>
+          <h2 className={`transition-all delay-50 duration-1000 ease-in-out lg:text-lg ${currentSection == 'Hero' ? 'opacity-100' : 'opacity-0'}`}>
+            A Japanese creative web design + development studio
+            based in the U.S, crafting bilingual digital experiences with
+            Storytelling and Interactivity.
+          </h2> */}
+          <h1 className={`font-custom font-bold text-4xl w-4/5 md:text-6xl`}>
+            We
+            <span className='font-medium glow-effect inline-block md:px-4'>
+              Illuminate
+            </span>
+            Your Global Digital Presence.
+          </h1>
+          <h2 className={`lg:text-lg`}>
             A Japanese creative web design + development studio
             based in the U.S, crafting bilingual digital experiences with
             Storytelling and Interactivity.

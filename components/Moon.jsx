@@ -7,7 +7,6 @@ import { useModelStore } from '@/lib/zustand/modelStore';
 export function Moon({ ...props }) {
   const { setModelLoading, position, lightPosition, zoom } = useModelStore();
   const { size, viewport, camera } = useThree();
-  // const { nodes, materials } = useGLTF('/moon/moon.gltf');
   const { nodes, materials } = useGLTF('/moon.glb');
   const modelGroup = useRef();
   const lightRef = useRef();
@@ -38,7 +37,6 @@ export function Moon({ ...props }) {
     if (nodes && materials) {
       setModelLoading(false);
     }
-
   }, [])
 
   return (

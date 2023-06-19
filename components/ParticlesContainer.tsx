@@ -13,7 +13,7 @@ const ParticlesContainer = () => {
 
     return (
         <Particles
-            className='z-0'
+            className='fixed inset-0 z-0'
             id="tsparticles"
             init={particlesInit}
             loaded={particlesLoaded}

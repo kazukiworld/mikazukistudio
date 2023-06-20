@@ -45,8 +45,8 @@ export default function Home() {
       {/* A background with a solid color and colorful blurred circle animations */}
       <GradientBackground />
 
-      {/* A loading screen for the 3D model */}
-      {/* <LoadingScreen /> */}
+      {/* A background GIF that plays until the 3D model fully loads */}
+      <LoadingScreen />
 
       {/* Navigation bar at the top */}
       <NavBar />
@@ -59,9 +59,6 @@ export default function Home() {
 
       {/* An arrow icon at the bottom of the screen to navigate to each section by scrolling. */}
       <DownArrowBtn />
-
-    
-      <Image className={`fixed inset-0 h-screen w-screen object-fit transition-all duration-1000 ${modelLoading ? 'z-20 opacity-100 scale-100' : 'z-0 opacity-0 scale-[6]'}`} src={'/spaceship.gif'} alt='warp' width={640} height={358} />
 
       {/* Sections that consists of key information like about, services, portfolio, and contact */}
       <div className='w-full h-screen lg:h-auto overflow-y-scroll lg:overflow-auto scroll-smooth snap-mandatory snap-y'>
@@ -91,8 +88,11 @@ export default function Home() {
             based in the U.S, crafting bilingual digital experiences with
             Storytelling and Interactivity.
           </h2>
-          <div>
-            <button className='font-custom bg-rose-600 font-bold px-4 py-3 rounded' onClick={handleContactClick}>Contact Us</button>
+          <div className='relative'>
+            <button className={`z-10 absolute font-custom bg-rose-600 font-bold px-4 py-3 rounded transition-all duration-750 ${currentSection ? 'opacity-100' : 'opacity-0'}`} onClick={handleContactClick}>
+              <h1>Contact Us</h1>
+            </button>
+            <h1 className={`absolute font-custom animate-pulse px-4 py-3 transition-all duration-750 ${currentSection ? 'opacity-0' : 'opacity-100'}`}>Loading...</h1>
           </div>
         </div>
 
@@ -113,7 +113,7 @@ export default function Home() {
         </div>
 
         <div ref={serviceSection} className='snap-center z-10 relative px-4 md:px-14 lg:px-48 w-full h-screen flex flex-col justify-center md:items-end'>
-          <div className='md:w-2/3 space-y-4 lg:space-y-8'>
+          <div className='md:w-2/3 lg:w-1/2 space-y-4 lg:space-y-8'>
             <h1 className={`font-custom text-2xl md:text-5xl transition-all duration-1000 ease-in-out ${currentSection == 'Service' ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-20'}`}>
               Website Creation
             </h1>

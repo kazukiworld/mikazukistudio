@@ -2,9 +2,9 @@ import { create } from 'zustand';
 
 export const useModelStore = create<ModelStore>((set) => ({
     modelLoading: true,
-    position: [1, 0, 0],
-    lightPosition: [3, -1, 0],
-    zoom: 10,
+    position: [0, 0, -20],
+    lightPosition: [0, 0, 40],
+    zoom: 0,
     setModelLoading: (newLoading: boolean) => set({ modelLoading: newLoading }),
     setPosition: (newPosition: number[]) => set({ position: newPosition }),
     setLightPosition: (newLightPosition: number[]) => set({ lightPosition: newLightPosition }),

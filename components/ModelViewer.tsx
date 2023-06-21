@@ -25,12 +25,9 @@ export default function ModelViewer(props: any) {
                 ref: heroSection,
                 action: () => {
                     setCurrentSection('Hero');
+                    console.log(modelLoading);
 
-                    if (modelLoading) {
-                        setPosition([0, 0, -20]);
-                        setLightPosition([10, 0, 0]);
-                        setZoom(0);
-                    } else {
+                    if (!modelLoading) {
                         if (deviceType == 'mobile') {
                             setPosition([0, -0.1, 0]);
                             setLightPosition([10, 12, -8]);
@@ -52,18 +49,20 @@ export default function ModelViewer(props: any) {
                 action: () => {
                     setCurrentSection('About');
 
-                    if (deviceType == 'mobile') {
-                        setPosition([-0.2, 1.3, 0]);
-                        setLightPosition([-12, -10, -4]);
-                        setZoom(7);
-                    } else if (deviceType == 'tablet') {
-                        setPosition([0.4, 1.6, 0]);
-                        setLightPosition([-12, -10, -4]);
-                        setZoom(4);
-                    } else {
-                        setPosition([8, 0.8, 2.8]);
-                        setLightPosition([-5, -5, -5]);
-                        setZoom(1.3);
+                    if (!modelLoading) {
+                        if (deviceType == 'mobile') {
+                            setPosition([-0.2, 1.3, 0]);
+                            setLightPosition([-12, -10, -4]);
+                            setZoom(7);
+                        } else if (deviceType == 'tablet') {
+                            setPosition([0.4, 1.6, 0]);
+                            setLightPosition([-12, -10, -4]);
+                            setZoom(4);
+                        } else {
+                            setPosition([8, 0.8, 2.8]);
+                            setLightPosition([-5, -5, -5]);
+                            setZoom(1.3);
+                        }
                     }
                 }
             },
@@ -72,18 +71,20 @@ export default function ModelViewer(props: any) {
                 action: () => {
                     setCurrentSection('Service');
 
-                    if (deviceType == 'mobile') {
-                        setPosition([-0.5, -3.8, 0]);
-                        setLightPosition([0, 40, -20]);
-                        setZoom(10);
-                    } else if (deviceType == 'tablet') {
-                        setPosition([-3, -6, 0]);
-                        setLightPosition([0, 35, -20]);
-                        setZoom(6);
-                    } else {
-                        setPosition([-12, -8, 3.8]);
-                        setLightPosition([6, 6, -5]);
-                        setZoom(3);
+                    if (!modelLoading) {
+                        if (deviceType == 'mobile') {
+                            setPosition([-0.5, -3.8, 0]);
+                            setLightPosition([0, 40, -20]);
+                            setZoom(10);
+                        } else if (deviceType == 'tablet') {
+                            setPosition([-3, -6, 0]);
+                            setLightPosition([0, 35, -20]);
+                            setZoom(6);
+                        } else {
+                            setPosition([-12, -8, 3.8]);
+                            setLightPosition([6, 6, -5]);
+                            setZoom(3);
+                        }
                     }
                 }
             },
@@ -92,18 +93,20 @@ export default function ModelViewer(props: any) {
                 action: () => {
                     setCurrentSection('Service 2');
 
-                    if (deviceType == 'mobile') {
-                        setPosition([-0.5, -3.8, 0]);
-                        setLightPosition([6, 6, 5]);
-                        setZoom(10);
-                    } else if (deviceType == 'tablet') {
-                        setPosition([-3, -6, 0]);
-                        setLightPosition([0, 35, -20]);
-                        setZoom(6);
-                    } else {
-                        setPosition([-12, -8, 3.8]);
-                        setLightPosition([6, 6, -5]);
-                        setZoom(3);
+                    if (!modelLoading) {
+                        if (deviceType == 'mobile') {
+                            setPosition([-0.5, -3.8, 0]);
+                            setLightPosition([6, 6, 5]);
+                            setZoom(10);
+                        } else if (deviceType == 'tablet') {
+                            setPosition([-3, -6, 0]);
+                            setLightPosition([0, 35, -20]);
+                            setZoom(6);
+                        } else {
+                            setPosition([-12, -8, 3.8]);
+                            setLightPosition([6, 6, -5]);
+                            setZoom(3);
+                        }
                     }
                 }
             },
@@ -112,18 +115,20 @@ export default function ModelViewer(props: any) {
                 action: () => {
                     setCurrentSection('Service 3');
 
-                    if (deviceType == 'mobile') {
-                        setPosition([-0.5, -3.8, 0]);
-                        setLightPosition([6, 6, 5]);
-                        setZoom(10);
-                    } else if (deviceType == 'tablet') {
-                        setPosition([-3, -6, 0]);
-                        setLightPosition([0, 35, -20]);
-                        setZoom(6);
-                    } else {
-                        setPosition([-12, -8, 3.8]);
-                        setLightPosition([6, 6, -5]);
-                        setZoom(3);
+                    if (!modelLoading) {
+                        if (deviceType == 'mobile') {
+                            setPosition([-0.5, -3.8, 0]);
+                            setLightPosition([6, 6, 5]);
+                            setZoom(10);
+                        } else if (deviceType == 'tablet') {
+                            setPosition([-3, -6, 0]);
+                            setLightPosition([0, 35, -20]);
+                            setZoom(6);
+                        } else {
+                            setPosition([-12, -8, 3.8]);
+                            setLightPosition([6, 6, -5]);
+                            setZoom(3);
+                        }
                     }
                 }
             },
@@ -132,39 +137,43 @@ export default function ModelViewer(props: any) {
                 action: () => {
                     setCurrentSection('Service 4');
 
-                    if (deviceType == 'mobile') {
-                        setPosition([0, -3.8, 0]);
-                        setLightPosition([6, 6, 5]);
-                        setZoom(10);
-                    } else if (deviceType == 'tablet') {
-                        setPosition([0, -6, 0]);
-                        setLightPosition([6, 6, 5]);
-                        setZoom(8);
-                    } else {
-                        setPosition([0, -8, 3.8]);
-                        setLightPosition([10, 20, 20]);
-                        setZoom(6);
+                    if (!modelLoading) {
+                        if (deviceType == 'mobile') {
+                            setPosition([0, -3.8, 0]);
+                            setLightPosition([6, 6, 5]);
+                            setZoom(10);
+                        } else if (deviceType == 'tablet') {
+                            setPosition([0, -6, 0]);
+                            setLightPosition([6, 6, 5]);
+                            setZoom(8);
+                        } else {
+                            setPosition([0, -8, 3.8]);
+                            setLightPosition([10, 20, 20]);
+                            setZoom(6);
+                        }
                     }
                 }
             },
             {
                 ref: portfolioSection,
                 action: () => {
-                    setCurrentSection('Portfolio')
-                    if (deviceType == 'mobile') {
-                        setPosition([2, -3.8, 0]);
-                        setLightPosition([6, 6, 5]);
-                        setZoom(12);
-                    } else if (deviceType == 'tablet') {
-                        setPosition([2, -7, 0]);
-                        setLightPosition([6, 6, 5]);
-                        setZoom(12);
-                    } else {
-                        setPosition([20, -8, 3.8]);
-                        setLightPosition([0, 0, 0]);
-                        setZoom(3);
-                    }
+                    setCurrentSection('Portfolio');
 
+                    if (!modelLoading) {
+                        if (deviceType == 'mobile') {
+                            setPosition([2, -3.8, 0]);
+                            setLightPosition([6, 6, 5]);
+                            setZoom(12);
+                        } else if (deviceType == 'tablet') {
+                            setPosition([2, -7, 0]);
+                            setLightPosition([6, 6, 5]);
+                            setZoom(12);
+                        } else {
+                            setPosition([20, -8, 3.8]);
+                            setLightPosition([0, 0, 0]);
+                            setZoom(3);
+                        }
+                    }
                 }
             },
             {

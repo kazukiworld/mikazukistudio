@@ -42,10 +42,10 @@ export default function NavBar() {
                     <h1>Mikazuki Studio</h1>
                 </div>
                 <div className='w-1/3 flex justify-between items-center'>
-                    <button name='Hero' onClick={handleOptionClick}>Home</button>
-                    <button name='About' onClick={handleOptionClick}>About</button>
-                    <button name='Service' onClick={handleOptionClick}>Service</button>
-                    <button name='Portfolio' onClick={handleOptionClick}>Portfolio</button>
+                    <button className={`transition-all duration-1000 ${currentSection == 'Hero' ? 'text-rose-500 font-bold animate-pulse':'text-white'}`} name='Hero' onClick={handleOptionClick}>Home</button>
+                    <button className={`transition-all duration-1000 ${currentSection == 'About' ? 'text-rose-500 font-bold animate-pulse':'text-white'}`} name='About' onClick={handleOptionClick}>About</button>
+                    <button className={`transition-all duration-1000 ${currentSection?.includes('Service') ? 'text-rose-500 font-bold animate-pulse':'text-white'}`} name='Service' onClick={handleOptionClick}>Service</button>
+                    <button className={`transition-all duration-1000 ${currentSection == 'Portfolio' ? 'text-rose-500 font-bold animate-pulse':'text-white'}`} name='Portfolio' onClick={handleOptionClick}>Portfolio</button>
                 </div>
                 <button name='Contact' onClick={handleOptionClick} className='py-2 px-4 border border-yellow-50 rounded'>
                     Contact Us
@@ -69,11 +69,11 @@ export default function NavBar() {
             </div>
             <div className={`z-40 w-full fixed bg-[#090909] border-b border-yellow-50 pt-10 transition-all duration-300 ease-in-out lg:hidden ${openMenu ? "translate-y-0" : "-translate-y-full"}`}>
                 <div className='flex flex-col justify-center items-center p-4 space-y-2'>
-                    <button name='Hero' onClick={handleOptionClick}>Home</button>
-                    <button name='About' onClick={handleOptionClick}>About</button>
-                    <button name='Service' onClick={handleOptionClick}>Service</button>
-                    <button name='Portfolio' onClick={handleOptionClick}>Portfolio</button>
-                    <button name='Contact' onClick={handleOptionClick}>Contact Us</button>
+                    <button className={`transition-all duration-1000 ${currentSection == 'Hero' ? 'text-rose-500 font-bold animate-pulse':'text-white'}`} name='Hero' onClick={handleOptionClick}>Home</button>
+                    <button className={`transition-all duration-1000 ${currentSection == 'About' ? 'text-rose-500 font-bold animate-pulse':'text-white'}`} name='About' onClick={handleOptionClick}>About</button>
+                    <button className={`transition-all duration-1000 ${currentSection?.includes('Service') ? 'text-rose-500 font-bold animate-pulse':'text-white'}`} name='Service' onClick={handleOptionClick}>Service</button>
+                    <button className={`transition-all duration-1000 ${currentSection == 'Portfolio' ? 'text-rose-500 font-bold animate-pulse':'text-white'}`} name='Portfolio' onClick={handleOptionClick}>Portfolio</button>
+                    <button className={`transition-all duration-1000 ${currentSection == 'Contact' ? 'text-rose-500 font-bold animate-pulse':'text-white'}`} name='Contact' onClick={handleOptionClick}>Contact Us</button>
                 </div>
             </div>
         </div>

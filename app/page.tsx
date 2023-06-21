@@ -8,14 +8,12 @@ import ModelViewer from '@/components/ModelViewer'
 import NavBar from '@/components/NavBar';
 import ParticlesContainer from '@/components/ParticlesContainer';
 import Portfolio from '@/components/Portfolio';
-import { useModelStore } from '@/lib/zustand/modelStore';
 import { usePageStore } from '@/lib/zustand/pageStore';
 import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 
 export default function Home() {
   const { setSections, currentSection } = usePageStore();
-  const { modelLoading } = useModelStore();
   const heroSection = useRef<HTMLDivElement | null>(null);
   const aboutSection = useRef<HTMLDivElement | null>(null);
   const serviceSection = useRef<HTMLDivElement | null>(null);
@@ -26,7 +24,6 @@ export default function Home() {
   const contactSection = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-
     setSections({
       heroSection, aboutSection, serviceSection, serviceSection2,
       serviceSection3, serviceSection4, portfolioSection, contactSection
@@ -36,8 +33,6 @@ export default function Home() {
   const handleContactClick = () => {
     contactSection?.current && contactSection?.current.scrollIntoView({ behavior: 'smooth' });
   }
-
-  // ${modelLoading ? 'fixed' : 'relative'}
 
   return (
     <main className={`text-yellow-50`}>
@@ -64,18 +59,6 @@ export default function Home() {
       <div className='w-full h-screen lg:h-auto overflow-y-scroll lg:overflow-auto scroll-smooth snap-mandatory snap-y'>
 
         <div ref={heroSection} className={`snap-center z-20 relative px-4 md:px-14 lg:px-24 md:w-4/5 lg:w-3/5 h-screen flex flex-col justify-center space-y-4 lg:space-y-8`}>
-          {/* <h1 className={`font-custom font-bold text-4xl w-4/5 md:text-6xl transition-all duration-1000 ease-in-out ${currentSection == 'Hero' ? 'opacity-100' : 'opacity-0'}`}>
-            We
-            <span className='font-medium glow-effect inline-block md:px-4'>
-              Illuminate
-            </span>
-            Your Global Digital Presence.
-          </h1>
-          <h2 className={`transition-all delay-50 duration-1000 ease-in-out lg:text-lg ${currentSection == 'Hero' ? 'opacity-100' : 'opacity-0'}`}>
-            A Japanese creative web design + development studio
-            based in the U.S, crafting bilingual digital experiences with
-            Storytelling and Interactivity.
-          </h2> */}
           <h1 className={`font-custom font-bold text-4xl w-4/5 md:text-6xl`}>
             We
             <span className='font-medium glow-effect inline-block md:px-4'>
@@ -92,7 +75,7 @@ export default function Home() {
             <button className={`z-10 absolute font-custom bg-rose-600 font-bold px-4 py-3 rounded transition-all duration-750 ${currentSection ? 'opacity-100' : 'opacity-0'}`} onClick={handleContactClick}>
               <h1>Contact Us</h1>
             </button>
-            <h1 className={`absolute font-custom animate-pulse px-4 py-3 transition-all duration-750 ${currentSection ? 'opacity-0' : 'opacity-100'}`}>Loading...</h1>
+            <h1 className={`absolute font-custom animate-pulse px-4 py-3 transition-all duration-750 text-lg ${currentSection ? 'opacity-0' : 'opacity-100'}`}>Loading...</h1>
           </div>
         </div>
 
@@ -112,7 +95,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div ref={serviceSection} className='snap-center z-10 relative px-4 md:px-14 lg:px-48 w-full h-screen flex flex-col justify-center md:items-end'>
+        <div ref={serviceSection} className='relative snap-center z-10 relative px-4 md:px-14 lg:px-48 w-full h-screen flex flex-col justify-center md:items-end'>
           <div className='md:w-2/3 lg:w-1/2 space-y-4 lg:space-y-8'>
             <h1 className={`font-custom text-2xl md:text-5xl transition-all duration-1000 ease-in-out ${currentSection == 'Service' ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-20'}`}>
               Website Creation

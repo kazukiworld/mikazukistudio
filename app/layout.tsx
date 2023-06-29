@@ -14,10 +14,10 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="shortcut icon" href="/mikazukistudio-logo.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/mikazukistudio-logo.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/mikazukistudio-logo.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/mikazukistudio-logo.png" />
+        <link rel="shortcut icon" href="/favicon-32x32.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-32x32.png" />
         <title>Japanese Web Design and Development Agency based in the U.S</title>
         <meta name="keywords"
           content="Japanese web design agency, Japanese web development agency" />

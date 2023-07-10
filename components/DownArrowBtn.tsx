@@ -1,30 +1,39 @@
 import { usePageStore } from '@/lib/zustand/pageStore';
-import { useEffect, useState } from 'react';
+import { MutableRefObject } from 'react';
+
+type SectionRefs = {
+    [key: string]: MutableRefObject<HTMLElement | null> | null;
+}
 
 export default function DownArrowBtn() {
-    const { currentSection, sections: { aboutSection, serviceSection, serviceSection2, serviceSection3, serviceSection4, contactSection, portfolioSection } } = usePageStore();
-    const [end, setEnd] = useState<boolean>(false);
+    const {
+        currentSection,
+        sections: {
+            aboutSection,
+            serviceSection,
+            serviceSection2,
+            serviceSection3,
+            serviceSection4,
+            contactSection,
+            portfolioSection
+        }
+    } = usePageStore();
 
-    useEffect(() => {
-        currentSection == 'Contact' ? setEnd(true) : setEnd(false);
-    }, [currentSection])
+    const sectionRefs: SectionRefs = {
+        'heroSection': aboutSection,
+        'aboutSection': serviceSection,
+        'serviceSection': serviceSection2,
+        'serviceSection2': serviceSection3,
+        'serviceSection3': serviceSection4,
+        'serviceSection4': portfolioSection,
+        'portfolioSection': contactSection,
+    };
+
+    const end = currentSection === 'contactSection';
 
     const handleArrowClick = () => {
-        switch (currentSection) {
-            case 'Hero': aboutSection?.current && aboutSection?.current.scrollIntoView({ behavior: 'smooth' });
-                break;
-            case 'About': serviceSection?.current && serviceSection?.current.scrollIntoView({ behavior: 'smooth' });
-                break;
-            case 'Service': serviceSection2?.current && serviceSection2?.current.scrollIntoView({ behavior: 'smooth' });
-                break;
-            case 'Service 2': serviceSection3?.current && serviceSection3?.current.scrollIntoView({ behavior: 'smooth' });
-                break;
-            case 'Service 3': serviceSection4?.current && serviceSection4?.current.scrollIntoView({ behavior: 'smooth' });
-                break;
-            case 'Service 4': portfolioSection?.current && portfolioSection?.current.scrollIntoView({ behavior: 'smooth' });
-                break;
-            case 'Portfolio': contactSection?.current && contactSection?.current.scrollIntoView({ behavior: 'smooth' });
-                break;
+        if (currentSection) {
+            sectionRefs[currentSection]?.current?.scrollIntoView({ behavior: 'smooth' });
         }
     }
 

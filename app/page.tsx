@@ -9,7 +9,6 @@ import NavBar from '@/components/NavBar';
 import ParticlesContainer from '@/components/ParticlesContainer';
 import Portfolio from '@/components/Portfolio';
 import { usePageStore } from '@/lib/zustand/pageStore';
-import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 
 export default function Home() {
@@ -81,13 +80,13 @@ export default function Home() {
 
         <div ref={aboutSection} className='snap-center z-20 w-full h-screen space-y-20 lg:py-24 px-4 md:px-14 lg:px-48 flex flex-col justify-center items-center relative'>
           <div className='flex justify-end items-center space-x-8'>
-            <h1 className={`font-custom w-2/3 lg:w-2/5 text-2xl md:text-5xl text-end transition-all duration-700 ease-in-out ${currentSection == 'About' ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
+            <h1 className={`font-custom w-2/3 lg:w-2/5 text-2xl md:text-5xl text-end transition-all duration-700 ease-in-out ${currentSection == 'aboutSection' ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
               A fusion of Western design sophistication and the grace of Japanese aesthetics
             </h1>
-            <hr className={`bg-yellow-50 w-0.5 md:w-1 transition-all duration-1000 ease-in-out ${currentSection == 'About' ? 'h-full' : 'h-0'}`} />
+            <hr className={`bg-yellow-50 w-0.5 md:w-1 transition-all duration-1000 ease-in-out ${currentSection == 'aboutSection' ? 'h-full' : 'h-0'}`} />
           </div>
           <div>
-            <p className={`w-full md:w-1/2 lg:w-1/3 lg:text-lg transition-all duration-1000 delay-100 ease-in-out ${currentSection == 'About' ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-20'}`}>
+            <p className={`w-full md:w-1/2 lg:w-1/3 lg:text-lg transition-all duration-1000 delay-100 ease-in-out ${currentSection == 'aboutSection' ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-20'}`}>
               Mikazuki Studio specializes in bilingual English and Japanese web design and development
               with global clients. Our expertise in multiple languages ensures a smooth user experience,
               targeting both English and Japanese markets.
@@ -97,10 +96,10 @@ export default function Home() {
 
         <div ref={serviceSection} className='relative snap-center z-10 relative px-4 md:px-14 lg:px-48 w-full h-screen flex flex-col justify-center md:items-end'>
           <div className='md:w-2/3 lg:w-1/2 space-y-4 lg:space-y-8'>
-            <h1 className={`font-custom text-2xl md:text-5xl transition-all duration-1000 ease-in-out ${currentSection == 'Service' ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-20'}`}>
+            <h1 className={`font-custom text-2xl md:text-5xl transition-all duration-1000 ease-in-out ${currentSection == 'serviceSection' ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-20'}`}>
               Website Creation
             </h1>
-            <p className={`w-full lg:text-lg transition-all duration-1000 delay-100 ease-in-out ${currentSection == 'Service' ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-20'}`}>
+            <p className={`w-full lg:text-lg transition-all duration-1000 delay-100 ease-in-out ${currentSection == 'serviceSection' ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-20'}`}>
               Embark on a seamless journey from ideation to the final launch of your website.
               Our comprehensive services cover every aspect, including research, design, development,
               and deployment. We bring your vision to life with a touch of elegance, creating captivating
@@ -111,10 +110,10 @@ export default function Home() {
 
         <div ref={serviceSection2} className='snap-center z-10 relative px-4 md:px-14 lg:px-48 w-full space-y-4 lg:space-y-8 h-screen flex flex-col justify-center md:items-end'>
           <div className='md:w-2/3 lg:w-1/2 space-y-4 lg:space-y-8'>
-            <h1 className={`font-custom text-2xl md:text-5xl transition-all duration-1000 ease-in-out ${currentSection == 'Service 2' ? 'opacity-100' : 'opacity-0'}`}>
+            <h1 className={`font-custom text-2xl md:text-5xl transition-all duration-1000 ease-in-out ${currentSection == 'serviceSection2' ? 'opacity-100' : 'opacity-0'}`}>
               Localization and SEO Support
             </h1>
-            <p className={`w-full lg:text-lg transition-all duration-1000 delay-50 ease-in-out ${currentSection == 'Service 2' ? 'opacity-100' : 'opacity-0'}`}>
+            <p className={`w-full lg:text-lg transition-all duration-1000 delay-50 ease-in-out ${currentSection == 'serviceSection2' ? 'opacity-100' : 'opacity-0'}`}>
               Expand your reach across borders with our international support for localization and search
               engine optimization. We ensure your website adapts to different cultural contexts and
               languages, while optimizing its visibility in search engine results. This ensures your
@@ -125,10 +124,10 @@ export default function Home() {
 
         <div ref={serviceSection3} className='snap-center z-10 relative px-4 md:px-14 lg:px-48 w-full space-y-4 lg:space-y-8 h-screen flex flex-col justify-center md:items-end'>
           <div className='md:w-2/3 lg:w-1/2 space-y-4 lg:space-y-8'>
-            <h1 className={`font-custom text-2xl md:text-5xl  transition-all duration-1000 ease-in-out ${currentSection == 'Service 3' ? 'opacity-100' : 'opacity-0'}`}>
+            <h1 className={`font-custom text-2xl md:text-5xl  transition-all duration-1000 ease-in-out ${currentSection == 'serviceSection3' ? 'opacity-100' : 'opacity-0'}`}>
               Custom Web-Based Systems and Software
             </h1>
-            <p className={`w-full lg:text-lg transition-all duration-1000 delay-50 ease-in-out ${currentSection == 'Service 3' ? 'opacity-100' : 'opacity-0'}`}>
+            <p className={`w-full lg:text-lg transition-all duration-1000 delay-50 ease-in-out ${currentSection == 'serviceSection3' ? 'opacity-100' : 'opacity-0'}`}>
               Unlock the full potential of your digital presence with our web-based systems and software
               solutions. From content management systems to e-commerce platforms, we develop user-friendly
               and technologically advanced solutions that streamline your operations and enhance your online
@@ -137,7 +136,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div ref={serviceSection4} className={`snap-center relative z-20 w-full space-y-8 h-screen flex flex-col justify-center items-center px-4 md:px-14 transition-all duration-1000 ease-in-out ${currentSection == 'Service 4' ? 'opacity-100' : 'opacity-0'}`}>
+        <div ref={serviceSection4} className={`snap-center relative z-20 w-full space-y-8 h-screen flex flex-col justify-center items-center px-4 md:px-14 transition-all duration-1000 ease-in-out ${currentSection == 'serviceSection4' ? 'opacity-100' : 'opacity-0'}`}>
           <div className='md:w-2/3 lg:w-1/3 flex flex-col justify-center items-center space-y-4 lg:space-y-6'>
             <h1 className='font-custom font-bold text-center text-2xl md:text-5xl'>Free Consultation</h1>
             <p className='w-full text-center lg:text-lg'>

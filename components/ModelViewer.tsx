@@ -1,194 +1,110 @@
-import { useEffect, Suspense, useState } from 'react'
+import { useEffect, Suspense } from 'react'
 import { Canvas } from '@react-three/fiber';
 import { Moon } from './Moon';
 import refObserver from '@/lib/refObserver';
 import { useModelStore } from '@/lib/zustand/modelStore';
 import { usePageStore } from '@/lib/zustand/pageStore';
 
-export default function ModelViewer(props: any) {
+interface SectionConfig {
+    mobile: { position: [number, number, number]; light: [number, number, number]; zoom: number };
+    tablet: { position: [number, number, number]; light: [number, number, number]; zoom: number };
+    computer: { position: [number, number, number]; light: [number, number, number]; zoom: number };
+}
+
+interface Config {
+    heroSection: SectionConfig;
+    aboutSection: SectionConfig;
+    serviceSection: SectionConfig;
+    serviceSection2: SectionConfig;
+    serviceSection3: SectionConfig;
+    serviceSection4: SectionConfig;
+    portfolioSection: SectionConfig;
+    contactSection: SectionConfig;
+}
+
+export default function ModelViewer() {
     const { setPosition, setLightPosition, setZoom, modelLoading } = useModelStore();
-    const { setCurrentSection, sections: { heroSection, aboutSection, serviceSection, serviceSection2, serviceSection3, serviceSection4, portfolioSection, contactSection } } = usePageStore();
+    const { setCurrentSection, sections } = usePageStore();
+
+    const deviceType = window.innerWidth <= 480 ? 'mobile' : window.innerWidth <= 1024 ? 'tablet' : 'computer';
+
+    const config: Config = {
+        'heroSection': {
+            'mobile': { position: [0, -0.1, 0], light: [10, 12, -8], zoom: 20 },
+            'tablet': { position: [0, 0, 0], light: [8, -1, 0], zoom: 16 },
+            'computer': { position: [1, 0, 0], light: [3, -1, 0], zoom: 10 },
+        },
+        'aboutSection': {
+            'mobile': { position: [-0.2, 1.3, 0], light: [-12, -10, -4], zoom: 7 },
+            'tablet': { position: [0.4, 1.6, 0], light: [-12, -10, -4], zoom: 4 },
+            'computer': { position: [8, 0.8, 2.8], light: [-5, -5, -5], zoom: 1.3 },
+        },
+        'serviceSection': {
+            'mobile': { position: [-0.5, -3.8, 0], light: [0, 40, -20], zoom: 10 },
+            'tablet': { position: [-3, -6, 0], light: [0, 35, -20], zoom: 6 },
+            'computer': { position: [-12, -8, 3.8], light: [6, 6, -5], zoom: 3 },
+        },
+        'serviceSection2': {
+            'mobile': { position: [-0.5, -3.8, 0], light: [6, 6, 5], zoom: 10 },
+            'tablet': { position: [-3, -6, 0], light: [0, 35, -20], zoom: 6 },
+            'computer': { position: [-12, -8, 3.8], light: [6, 6, -5], zoom: 3 },
+        },
+        'serviceSection3': {
+            'mobile': { position: [-0.5, -3.8, 0], light: [6, 6, 5], zoom: 10 },
+            'tablet': { position: [-3, -6, 0], light: [0, 35, -20], zoom: 6 },
+            'computer': { position: [-12, -8, 3.8], light: [6, 6, -5], zoom: 3 },
+        },
+        'serviceSection4': {
+            'mobile': { position: [0, -3.8, 0], light: [6, 6, 5], zoom: 10 },
+            'tablet': { position: [0, -6, 0], light: [6, 6, 5], zoom: 8 },
+            'computer': { position: [0, -8, 3.8], light: [10, 20, 20], zoom: 6 },
+        },
+        'portfolioSection': {
+            'mobile': { position: [2, -3.8, 0], light: [6, 6, 5], zoom: 12 },
+            'tablet': { position: [2, -7, 0], light: [6, 6, 5], zoom: 12 },
+            'computer': { position: [20, -8, 3.8], light: [0, 0, 0], zoom: 3 },
+        },
+        'contactSection': {
+            'mobile': { position: [2, -3.8, 0], light: [6, 6, 5], zoom: 12 },
+            'tablet': { position: [2, -7, 0], light: [6, 6, 5], zoom: 12 },
+            'computer': { position: [20, -8, 3.8], light: [0, 0, 0], zoom: 3 },
+        },
+    };
+
+    const setValues = (section: keyof Config) => {
+        if (!modelLoading && config[section]) {
+            const { position, light, zoom } = config[section][deviceType];
+
+            console.log(config[section][deviceType])
+            setPosition(position);
+            setLightPosition(light);
+            setZoom(zoom);
+        }
+    }
 
     useEffect(() => {
-        let deviceType = 'computer';
+        let refObserverArray = [];
 
-        if (window.innerWidth <= 480) {
-            deviceType = 'mobile';
-        } else if (window.innerWidth <= 1024) {
-            deviceType = 'tablet';
-        } else {
-            deviceType = 'computer';
+        for (const key in sections) {
+            if (sections.hasOwnProperty(key)) {
+                const sectionKey = key as keyof Config;
+                refObserverArray.push({
+                    ref: sections[sectionKey],
+                    action: () => {
+                        setCurrentSection(sectionKey);
+                        setValues(sectionKey);
+                    },
+                });
+            }
         }
 
-        refObserver([
-            {
-                ref: heroSection,
-                action: () => {
-                    setCurrentSection('Hero');
-                    console.log(modelLoading);
-
-                    if (!modelLoading) {
-                        if (deviceType == 'mobile') {
-                            setPosition([0, -0.1, 0]);
-                            setLightPosition([10, 12, -8]);
-                            setZoom(20);
-                        } else if (deviceType == 'tablet') {
-                            setPosition([0, 0, 0]);
-                            setLightPosition([8, -1, 0]);
-                            setZoom(16);
-                        } else {
-                            setPosition([1, 0, 0]);
-                            setLightPosition([3, -1, 0]);
-                            setZoom(10);
-                        }
-                    }
-                }
-            },
-            {
-                ref: aboutSection,
-                action: () => {
-                    setCurrentSection('About');
-
-                    if (!modelLoading) {
-                        if (deviceType == 'mobile') {
-                            setPosition([-0.2, 1.3, 0]);
-                            setLightPosition([-12, -10, -4]);
-                            setZoom(7);
-                        } else if (deviceType == 'tablet') {
-                            setPosition([0.4, 1.6, 0]);
-                            setLightPosition([-12, -10, -4]);
-                            setZoom(4);
-                        } else {
-                            setPosition([8, 0.8, 2.8]);
-                            setLightPosition([-5, -5, -5]);
-                            setZoom(1.3);
-                        }
-                    }
-                }
-            },
-            {
-                ref: serviceSection,
-                action: () => {
-                    setCurrentSection('Service');
-
-                    if (!modelLoading) {
-                        if (deviceType == 'mobile') {
-                            setPosition([-0.5, -3.8, 0]);
-                            setLightPosition([0, 40, -20]);
-                            setZoom(10);
-                        } else if (deviceType == 'tablet') {
-                            setPosition([-3, -6, 0]);
-                            setLightPosition([0, 35, -20]);
-                            setZoom(6);
-                        } else {
-                            setPosition([-12, -8, 3.8]);
-                            setLightPosition([6, 6, -5]);
-                            setZoom(3);
-                        }
-                    }
-                }
-            },
-            {
-                ref: serviceSection2,
-                action: () => {
-                    setCurrentSection('Service 2');
-
-                    if (!modelLoading) {
-                        if (deviceType == 'mobile') {
-                            setPosition([-0.5, -3.8, 0]);
-                            setLightPosition([6, 6, 5]);
-                            setZoom(10);
-                        } else if (deviceType == 'tablet') {
-                            setPosition([-3, -6, 0]);
-                            setLightPosition([0, 35, -20]);
-                            setZoom(6);
-                        } else {
-                            setPosition([-12, -8, 3.8]);
-                            setLightPosition([6, 6, -5]);
-                            setZoom(3);
-                        }
-                    }
-                }
-            },
-            {
-                ref: serviceSection3,
-                action: () => {
-                    setCurrentSection('Service 3');
-
-                    if (!modelLoading) {
-                        if (deviceType == 'mobile') {
-                            setPosition([-0.5, -3.8, 0]);
-                            setLightPosition([6, 6, 5]);
-                            setZoom(10);
-                        } else if (deviceType == 'tablet') {
-                            setPosition([-3, -6, 0]);
-                            setLightPosition([0, 35, -20]);
-                            setZoom(6);
-                        } else {
-                            setPosition([-12, -8, 3.8]);
-                            setLightPosition([6, 6, -5]);
-                            setZoom(3);
-                        }
-                    }
-                }
-            },
-            {
-                ref: serviceSection4,
-                action: () => {
-                    setCurrentSection('Service 4');
-
-                    if (!modelLoading) {
-                        if (deviceType == 'mobile') {
-                            setPosition([0, -3.8, 0]);
-                            setLightPosition([6, 6, 5]);
-                            setZoom(10);
-                        } else if (deviceType == 'tablet') {
-                            setPosition([0, -6, 0]);
-                            setLightPosition([6, 6, 5]);
-                            setZoom(8);
-                        } else {
-                            setPosition([0, -8, 3.8]);
-                            setLightPosition([10, 20, 20]);
-                            setZoom(6);
-                        }
-                    }
-                }
-            },
-            {
-                ref: portfolioSection,
-                action: () => {
-                    setCurrentSection('Portfolio');
-
-                    if (!modelLoading) {
-                        if (deviceType == 'mobile') {
-                            setPosition([2, -3.8, 0]);
-                            setLightPosition([6, 6, 5]);
-                            setZoom(12);
-                        } else if (deviceType == 'tablet') {
-                            setPosition([2, -7, 0]);
-                            setLightPosition([6, 6, 5]);
-                            setZoom(12);
-                        } else {
-                            setPosition([20, -8, 3.8]);
-                            setLightPosition([0, 0, 0]);
-                            setZoom(3);
-                        }
-                    }
-                }
-            },
-            {
-                ref: contactSection,
-                action: () => {
-                    setCurrentSection('Contact')
-                }
-            },
-        ])
-    }, [heroSection, modelLoading])
+        refObserver(refObserverArray);
+    }, [modelLoading, sections])
 
     return (
         <div className='fixed inset-0 z-10 w-screen h-screen'>
             <Canvas>
-                <Suspense>
+                <Suspense fallback={null}>
                     <Moon />
                     <ambientLight intensity={0.02} />
                 </Suspense>
